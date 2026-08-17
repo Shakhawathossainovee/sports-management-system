@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🏆 Khela Hobe | About Us</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <style>
+        .about-content {
+            max-height: 70vh;
+            overflow-y: auto;
+            padding-right: 8px;
+        }
+
+        .about-content::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .about-content::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+
+        .about-content::-webkit-scrollbar-thumb {
+            background: #7CCB96;
+            border-radius: 4px;
+        }
+
+        .about-content h2 {
+            color: #7CCB96;
+            font-size: 32px;
+            margin-bottom: 4px;
+        }
+
+        .about-content .sub-title {
+            color: #bdbdbd;
+            margin-bottom: 20px;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        .about-content .about-section {
+            margin-bottom: 20px;
+        }
+
+        .about-content .about-section h3 {
+            color: #7CCB96;
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .about-content .about-section h3 i {
+            font-size: 16px;
+            color: #7CCB96;
+            width: 22px;
+        }
+
+        .about-content .about-section p {
+            color: #c8c8c8;
+            font-size: 14px;
+            line-height: 1.8;
+            margin-left: 32px;
+        }
+
+        .about-content .about-section ul {
+            margin: 6px 0 0 32px;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .about-content .about-section ul li {
+            color: #c8c8c8;
+            font-size: 13.5px;
+            line-height: 1.8;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .about-content .about-section ul li::before {
+            content: '▸';
+            color: #7CCB96;
+            position: absolute;
+            left: 0;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 16px 0 0 32px;
+        }
+
+        .about-stats .stat-item {
+            background: rgba(255, 255, 255, 0.04);
+            padding: 14px 10px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(124, 203, 150, 0.08);
+        }
+
+        .about-stats .stat-item .stat-number {
+            color: #7CCB96;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .about-stats .stat-item .stat-label {
+            color: #888;
+            font-size: 11px;
+            display: block;
+            margin-top: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                max-height: 55vh;
+            }
+
+            .about-content h2 {
+                font-size: 26px;
+            }
+
+            .about-content .about-section h3 {
+                font-size: 15px;
+            }
+
+            .about-content .about-section p,
+            .about-content .about-section ul li {
+                font-size: 13px;
+                margin-left: 0;
+            }
+
+            .about-content .about-section ul {
+                margin-left: 0;
+            }
+
+            .about-stats {
+                grid-template-columns: repeat(2, 1fr);
+                margin-left: 0;
+            }
+
+            .about-stats .stat-item .stat-number {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about-content {
+                max-height: 45vh;
+                padding-right: 4px;
+            }
+
+            .about-content h2 {
+                font-size: 22px;
+            }
+
+            .about-content .sub-title {
+                font-size: 12px;
+            }
+
+            .about-content .about-section h3 {
+                font-size: 14px;
+            }
+
+            .about-content .about-section h3 i {
+                font-size: 13px;
+                width: 18px;
+            }
+
+            .about-content .about-section p,
+            .about-content .about-section ul li {
+                font-size: 12px;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+
+            .about-stats .stat-item {
+                padding: 10px 8px;
+            }
+
+            .about-stats .stat-item .stat-number {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="home-page">
+
+    <!-- ===== NAVBAR ===== -->
+    <header>
+        <div class="container navbar">
+            <div class="logo">
+                <h2>
+                    <span class="logo-khela">Khela</span>
+                    <span class="logo-hobe">Hobe</span>
+                    <span class="logo-trophy">🏆</span>
+                </h2>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="search.php">Turfs & Fields</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="about.html" class="active">About Us</a></li>
+                </ul>
+            </nav>
+            <div class="nav-btn">
+                <a href="login.html" class="login-btn">Login</a>
+                <a href="register.html" class="register-btn">Register</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== ABOUT US + PLAYER IMAGE ===== -->
+    <section class="form-section">
+        <div class="form-container">
+
+            <!-- LEFT: ABOUT US CONTENT -->
+            <div class="form-box">
+                <div class="about-content">
+                    <h2>About Khela Hobe</h2>
+                    <p class="sub-title">Bangladesh's first sports aggregator platform.</p>
+
+                    <div class="about-section">
+                        <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+                        <p>Khela Hobe is Bangladesh's first sports aggregator platform. We help players discover and book football, cricket, and basketball turfs with just a few clicks — making sports accessible to everyone.</p>
+                    </div>
+
+                    <div class="about-section">
+                        <h3><i class="fas fa-eye"></i> Our Vision</h3>
+                        <p>To become the leading sports booking platform in South Asia, empowering athletes and sports enthusiasts to find and book the best playing fields effortlessly.</p>
+                    </div>
+
+                    <div class="about-section">
+                        <h3><i class="fas fa-star"></i> Our Values</h3>
+                        <ul>
+                            <li><strong>Quality Assurance:</strong> We ensure all listed turfs meet high standards of maintenance and safety.</li>
+                            <li><strong>Speed &amp; Efficiency:</strong> Quick booking process with instant confirmations.</li>
+                            <li><strong>Trust &amp; Reliability:</strong> Building long-term relationships with our users and partners.</li>
+                            <li><strong>Innovation:</strong> Continuously improving our platform with new features.</li>
+                            <li><strong>Community:</strong> Fostering a vibrant sports community across Bangladesh.</li>
+                        </ul>
+                    </div>
+
+                    <div class="about-section">
+                        <h3><i class="fas fa-chart-line"></i> Our Impact</h3>
+                        <div class="about-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">50+</span>
+                                <span class="stat-label">Playgrounds</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">100+</span>
+                                <span class="stat-label">Customers</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">80+</span>
+                                <span class="stat-label">Bookings</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">10+</span>
+                                <span class="stat-label">Cities</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="about-section">
+                        <h3><i class="fas fa-history"></i> Our Story</h3>
+                        <p>Founded in June 2026 during the FIFA World Cup, Khela Hobe was born from a passion for sports and a vision to connect players with the best playing fields across Bangladesh. What started as a small idea has grown into a trusted platform for athletes and sports enthusiasts.</p>
+                    </div>
+
+                    <div class="about-section">
+                        <h3><i class="fas fa-envelope"></i> Get in Touch</h3>
+                        <p>Have questions or want to collaborate? Reach out to us at <a href="mailto:info@khelahobee.com" style="color:#7CCB96;">info@khelahobee.com</a> or visit our <a href="contact.html" style="color:#7CCB96;">Contact Us</a> page.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: PLAYER IMAGE -->
+            <div class="hero-right">
+                <img src="players.png" alt="Player" />
+            </div>
+
+        </div>
+    </section>
+
+</div>
+
+</body>
+</html>

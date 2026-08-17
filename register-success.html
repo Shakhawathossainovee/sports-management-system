@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🏆 Khela Hobe | Registration Successful</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <style>
+        /* ===== SUCCESS PAGE STYLES ===== */
+        .success-box {
+            text-align: center;
+        }
+
+        .success-icon {
+            font-size: 72px;
+            color: #7CCB96;
+            margin-bottom: 15px;
+            animation: popIn 0.5s ease-out;
+        }
+
+        .success-box h2 {
+            color: #7CCB96;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .success-box p {
+            color: #bdbdbd;
+            font-size: 16px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .success-box p strong {
+            color: #7CCB96;
+            font-weight: 600;
+        }
+
+        .success-box .submit-btn {
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+            width: auto;
+            padding: 12px 40px;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            70% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="home-page">
+
+    <!-- ===== NAVBAR ===== -->
+    <header>
+        <div class="container navbar">
+            <div class="logo">
+                <h2>
+                    <span class="logo-khela">Khela</span>
+                    <span class="logo-hobe">Hobe</span>
+                    <span class="logo-trophy">🏆</span>
+                </h2>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="search.php">Turfs & Fields</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </nav>
+            <div class="nav-btn">
+                <a href="login.html" class="login-btn">Login</a>
+                <a href="register.html" class="register-btn">Register</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== SUCCESS MESSAGE + PLAYER IMAGE ===== -->
+    <section class="form-section">
+        <div class="form-container">
+
+            <!-- LEFT: SUCCESS MESSAGE -->
+            <div class="form-box success-box">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2>Registration Successful!</h2>
+                <p>
+                    Your account has been created successfully as
+                    <strong id="user-role" style="color: #7CCB96;">Player</strong>.
+                    <br>Please login to continue.
+                </p>
+                <a href="login.html" class="submit-btn">
+                    <i class="fas fa-sign-in-alt"></i> Login Now
+                </a>
+                <div class="login-link" style="margin-top:15px;">
+                    <a href="index.html">← Back to Home</a>
+                </div>
+            </div>
+
+            <!-- RIGHT: PLAYER IMAGE -->
+            <div class="hero-right">
+                <img src="players.png" alt="Player" />
+            </div>
+
+        </div>
+    </section>
+
+</div>
+
+<script>
+    // Get role from URL parameter (if passed from register.php)
+    const urlParams = new URLSearchParams(window.location.search);
+    const role = urlParams.get('role') || 'Player';
+    document.getElementById('user-role').textContent = role.charAt(0).toUpperCase() + role.slice(1);
+</script>
+
+</body>
+</html>

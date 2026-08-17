@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Owner Login | 🏆 KHELA HOBEE</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        .form-box h2 {
+            color: #7CCB96;
+            font-size: 32px;
+            margin-bottom: 4px;
+        }
+
+        .form-box p {
+            color: #bdbdbd;
+            margin-bottom: 96px;
+            font-size: 14px;
+        }
+
+        .form-box .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-box .login-link {
+            margin-top: 18px;
+            text-align: center;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .form-box .login-link a {
+            color: #7CCB96;
+            font-weight: 500;
+        }
+
+        .form-box .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            .form-box h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="home-page">
+
+<header>
+    <div class="container navbar">
+        <div class="logo">
+            <h2>
+                <span class="logo-khela">Khela</span>
+                <span class="logo-hobe">Hobe</span>
+                <span class="logo-trophy">🏆</span>
+            </h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="terms.html">Terms & Conditions</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="about.html">About Us</a></li>
+            </ul>
+        </nav>
+        <div class="nav-btn">
+            <a href="login.html" class="login-btn">Login</a>
+            <a href="register.html" class="register-btn">Register</a>
+        </div>
+    </div>
+</header>
+
+<section class="form-section">
+    <div class="form-container">
+        <div class="form-box">
+            <h2>Owner Login</h2>
+            <p>Manage your grounds and bookings.</p>
+
+            <form action="owner-login.php" method="POST">
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Email Address" required />
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" placeholder="Password" required />
+                </div>
+                <button type="submit" class="submit-btn">Login</button>
+            </form>
+
+            <div class="login-link">
+                Don't have an account? <a href="register.html" >Register</a>
+            </div>
+        </div>
+
+        <div class="hero-right">
+            <img src="players.png" alt="Players" />
+        </div>
+    </div>
+</section>
+
+</div>
+
+</body>
+</html>
