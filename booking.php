@@ -4,6 +4,18 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: login.html");
     exit();
 }
+
+// Booking is a PLAYER-only action. Block owners/admins even if they reach
+// this page directly (e.g. by typing the URL), not just via search.php.
+$role = $_SESSION['user_role'] ?? 'player';
+if ($role === 'owner') {
+    header("Location: owner-dashboard.php");
+    exit();
+} elseif ($role === 'admin') {
+    header("Location: admin-dashboard.php");
+    exit();
+}
+
 require_once 'includes/config.php';
 require_once 'includes/logger.php';
 require_once 'includes/mailer.php';

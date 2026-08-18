@@ -4,9 +4,26 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: login.html");
     exit();
 }
+
+// Player-only page: owners/admins have their own dashboards.
+$role = $_SESSION['user_role'] ?? 'player';
+if ($role === 'owner') {
+    header("Location: owner-dashboard.php");
+    exit();
+} elseif ($role === 'admin') {
+    header("Location: admin-dashboard.php");
+    exit();
+}
 require_once 'includes/config.php';
 
 $booking_id = isset($_GET['booking_id']) ? $_GET['booking_id'] : 0;
+
+// bKash goes through the real gateway flow, not the simulated form below.
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && ($_POST['payment_method'] ?? '') === 'bkash') {
+    // Real money, manual verification (no merchant API needed) — see bkash-manual.php.
+    header("Location: bkash-manual.php?booking_id=" . (int) $booking_id);
+    exit();
+}
 $user_id = $_SESSION['user_id'];
 
 // Get booking details - FIXED with JOIN instead of subquery
@@ -360,7 +377,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <nav>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.php">Home</a></li>
                     <li><a href="search.php">Turfs & Fields</a></li>
                     <li><a href="player-matching.php">Find Players</a></li>
                     <li><a href="my-bookings.php" class="active">My Bookings</a></li>

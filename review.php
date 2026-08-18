@@ -4,6 +4,16 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: login.html");
     exit();
 }
+
+// Player-only page: owners/admins have their own dashboards.
+$role = $_SESSION['user_role'] ?? 'player';
+if ($role === 'owner') {
+    header("Location: owner-dashboard.php");
+    exit();
+} elseif ($role === 'admin') {
+    header("Location: admin-dashboard.php");
+    exit();
+}
 require_once 'includes/config.php';
 
 $booking_id = isset($_GET['booking_id']) ? $_GET['booking_id'] : 0;

@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['owner_id'])) {
-    header("Location: owner-login.html");
+    header("Location: owner-login.php");
     exit();
 }
 require_once 'includes/config.php';
@@ -55,7 +55,7 @@ while ($row = $result->fetch_assoc()) {
 
 // ===== GENERATE PDF =====
 $options = new Options();
-$options->set('defaultFont', 'Courier');
+$options->set('defaultFont', 'DejaVu Sans');
 $dompdf = new Dompdf($options);
 
 $html = '
@@ -82,15 +82,15 @@ $html = '
 </head>
 <body>
     <div class="header">
-        <h1>🏆 KHELA HOBEE</h1>
+        <h1>KHELA HOBEE</h1>
         <h2>Booking Report</h2>
         <p>Generated: ' . date('d M Y, h:i A') . '</p>
         <p>Filter: ' . ucfirst($filter) . '</p>
     </div>
 
     <div class="total">
-        <p>📊 Total Bookings: <span>' . $total_bookings . '</span></p>
-        <p>💰 Total Revenue: <span>৳' . number_format($total_revenue, 2) . '</span></p>
+        <p>Total Bookings: <span>' . $total_bookings . '</span></p>
+        <p>Total Revenue: <span>Tk ' . number_format($total_revenue, 2) . '</span></p>
     </div>
 
     <table>
@@ -114,7 +114,7 @@ if (count($bookings_data) > 0) {
                 <td>' . $row['booking_reference'] . '</td>
                 <td>' . $row['ground_name'] . '</td>
                 <td>' . $row['player_name'] . '</td>
-                <td>৳' . $row['total_amount'] . '</td>
+                <td>Tk ' . $row['total_amount'] . '</td>
                 <td class="' . $status_color . '">' . ucfirst($row['status']) . '</td>
                 <td>' . date('d M Y', strtotime($row['booking_date'])) . '</td>
             </tr>';

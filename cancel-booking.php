@@ -58,24 +58,31 @@ $conn->close();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 <body>
+<div class="home-page">
     <header>
         <div class="container navbar">
-            <div class="logo"><h2>🏆 KHELA HOBEE</h2></div>
+            <div class="logo">
+                <h2>
+                    <span class="logo-khela">Khela</span>
+                    <span class="logo-hobe">Hobe</span>
+                    <span class="logo-trophy">🏆</span>
+                </h2>
+            </div>
             <nav>
                 <ul>
-                    <li><a href="index.html" >Home</a></li>
-                    <li><a href="search.php" >Turfs & Fields</a></li>
-                    <li><a href="my-bookings.php" >My Bookings</a></li>
-                    <li><a href="profile.php" >Profile</a></li>
-                    <li><a href="notifications.php" >Notifications</a></li>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="search.php">Turfs & Fields</a></li>
+                    <li><a href="my-bookings.php" class="active">My Bookings</a></li>
+                    <li><a href="profile.php">Profile</a></li>
+                    <li><a href="notifications.php">Notifications</a></li>
                     <li><a href="logout.php">Logout</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-    
-    <div style="max-width:500px; margin:60px auto; padding:20px;">
-        <div style="background:#1a1a1a; padding:40px; border-radius:12px; text-align:center; border:2px solid <?php echo $message_type == 'success' ? '#7CCB96' : '#ff6b6b'; ?>;">
+
+    <div style="max-width:500px; margin:60px auto; padding:20px; position:relative; z-index:2;">
+        <div style="background:rgba(11,11,11,0.9); padding:40px; border-radius:12px; text-align:center; border:2px solid <?php echo $message_type == 'success' ? '#7CCB96' : '#ff6b6b'; ?>;">
             <?php if ($message_type == 'success'): ?>
                 <div style="font-size:60px;">✅</div>
                 <h2 style="color:#7CCB96;">Booking Cancelled!</h2>
@@ -90,6 +97,16 @@ $conn->close();
             </a>
         </div>
     </div>
+
+    <!-- ===== PLAYER IMAGES ===== -->
+    <div class="player-image-left">
+        <img src="players.png" alt="Player" />
+    </div>
+    <div class="player-image-right">
+        <img src="players.png" alt="Player" />
+    </div>
+
+</div>
 </body>
 </html>
 

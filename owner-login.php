@@ -1,3 +1,47 @@
+<?php
+session_start();
+require_once 'includes/config.php';
+require_once 'includes/logger.php';
+
+$error = '';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $stmt = $conn->prepare("
+        SELECT u.user_id, u.name, u.password, u.role, go.owner_id, go.verification_status
+        FROM users u
+        JOIN ground_owners go ON go.user_id = u.user_id
+        WHERE u.email = ? AND u.role = 'owner'
+    ");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows == 1) {
+        $owner = $result->fetch_assoc();
+        if (password_verify($password, $owner['password'])) {
+            $_SESSION['user_id'] = $owner['user_id'];
+            $_SESSION['user_name'] = $owner['name'];
+            $_SESSION['user_role'] = 'owner';
+            $_SESSION['owner_id'] = $owner['owner_id'];
+
+            logAction($owner['user_id'], 'Owner Login', 'Owner logged in successfully');
+
+            header("Location: owner-dashboard.php");
+            exit();
+        } else {
+            $error = "Invalid password. Please try again.";
+            logAction(NULL, 'Owner Login Failed', 'Failed owner login attempt for email: ' . $email);
+        }
+    } else {
+        $error = "No owner account found with this email.";
+        logAction(NULL, 'Owner Login Failed', 'Failed owner login attempt for email: ' . $email);
+    }
+    $stmt->close();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +59,7 @@
 
         .form-box p {
             color: #bdbdbd;
-            margin-bottom: 96px;
+            margin-bottom: 32px;
             font-size: 14px;
         }
 
@@ -37,6 +81,16 @@
 
         .form-box .login-link a:hover {
             text-decoration: underline;
+        }
+
+        .error-box {
+            background: rgba(255,107,107,0.1);
+            border: 1px solid rgba(255,107,107,0.3);
+            color: #ff6b6b;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            margin-bottom: 18px;
         }
 
         @media (max-width: 480px) {
@@ -61,7 +115,7 @@
         </div>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li><a href="privacy.html">Privacy Policy</a></li>
                 <li><a href="terms.html">Terms & Conditions</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
@@ -80,6 +134,10 @@
         <div class="form-box">
             <h2>Owner Login</h2>
             <p>Manage your grounds and bookings.</p>
+
+            <?php if ($error): ?>
+                <div class="error-box"><?php echo htmlspecialchars($error); ?></div>
+            <?php endif; ?>
 
             <form action="owner-login.php" method="POST">
                 <div class="form-group">

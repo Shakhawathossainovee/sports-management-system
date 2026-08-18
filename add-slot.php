@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['owner_id'])) {
-    header("Location: owner-login.html");
+    header("Location: owner-login.php");
     exit();
 }
 require_once 'includes/config.php';

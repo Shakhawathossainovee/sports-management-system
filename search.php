@@ -5,10 +5,21 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
+// Search/booking is a PLAYER-only area. Owners and admins have their own
+// dashboards and should never see the player booking flow.
+$role = $_SESSION['user_role'] ?? 'player';
+if ($role === 'owner') {
+    header("Location: owner-dashboard.php");
+    exit();
+} elseif ($role === 'admin') {
+    header("Location: admin-dashboard.php");
+    exit();
+}
+
 require_once 'includes/config.php';
 
 // Get all cities for dropdown
-$cities_stmt = $conn->prepare("SELECT DISTINCT city FROM grounds WHERE status = 'active' ORDER BY city");
+$cities_stmt = $conn->prepare("SELECT DISTINCT city FROM grounds WHERE status = 'active' AND city IS NOT NULL AND TRIM(city) != '' ORDER BY city");
 $cities_stmt->execute();
 $cities_result = $cities_stmt->get_result();
 $cities = [];

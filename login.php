@@ -18,7 +18,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['user_id'] = $user['user_id'];
             $_SESSION['user_name'] = $user['name'];
             $_SESSION['user_role'] = $user['role'];
-            
+
+            // Owners need owner_id in session too (owner-dashboard.php and
+            // related pages check this specifically, not just user_role).
+            if ($user['role'] === 'owner') {
+                $owner_stmt = $conn->prepare("SELECT owner_id FROM ground_owners WHERE user_id = ?");
+                $owner_stmt->bind_param("i", $user['user_id']);
+                $owner_stmt->execute();
+                $owner_row = $owner_stmt->get_result()->fetch_assoc();
+                $owner_stmt->close();
+                if ($owner_row) {
+                    $_SESSION['owner_id'] = $owner_row['owner_id'];
+                }
+            }
+
             logAction($user['user_id'], 'Login', 'User logged in successfully');
             
             // ===== REDIRECT TO SUCCESS PAGE =====

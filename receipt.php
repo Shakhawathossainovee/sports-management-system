@@ -48,7 +48,7 @@ if (!$booking) {
 // =============================================
 
 $options = new Options();
-$options->set('defaultFont', 'Courier');
+$options->set('defaultFont', 'DejaVu Sans');
 $dompdf = new Dompdf($options);
 
 $html = '
@@ -174,12 +174,12 @@ $html = '
     <div class="receipt-container">
         <!-- Header -->
         <div class="header">
-            <h1>🏆 Khela Hobee</h1>
+            <h1>Khela Hobee</h1>
             <p>Payment Receipt</p>
         </div>
 
         <div class="receipt-title">
-            📄 <span>Payment Receipt</span>
+            <span>Payment Receipt</span>
         </div>
 
         <!-- Status -->
@@ -228,12 +228,12 @@ $html = '
         <!-- Amount -->
         <div class="amount-box">
             <div class="label">Total Amount Paid</div>
-            <div class="amount">৳' . number_format($booking['total_amount'], 2) . '</div>
+            <div class="amount">Tk ' . number_format($booking['total_amount'], 2) . '</div>
         </div>
 
         <!-- Footer -->
         <div class="footer">
-            <div class="brand">🏆 Khela Hobee</div>
+            <div class="brand">Khela Hobee</div>
             <p>Thank you for booking with us!</p>
             <p>For any queries, contact us at info@khelahobee.com</p>
             <div class="print-date">Generated on: ' . date('d M Y, h:i A') . '</div>
